@@ -35,13 +35,14 @@ public class UserRegistrationSteps {
     public void the_response_should_contain_a_message(String message) {
         String responseBody = response.getBody().asString();
         System.out.println("Response Body: " + responseBody);
-
-        if (message.contains("<email>")) {
-            String actualMessage = response.jsonPath().getString("errorMessage");
-            assertTrue(actualMessage.contains("User with email"));
-            assertTrue(actualMessage.contains("already exists"));
-        } else {
-            assertTrue(responseBody.contains(message));
+        if(response.statusCode()==201){
+            String actualMessage = response.jsonPath().getString("message");
+            assertTrue(actualMessage.equals(message));
         }
+        else {
+            String actualMessage = response.jsonPath().getString("errorMessage");
+            assertTrue(actualMessage.startsWith(message));
+        }
+
     }
 }

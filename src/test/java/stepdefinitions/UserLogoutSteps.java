@@ -52,7 +52,7 @@ public class UserLogoutSteps {
         else if(response.statusCode()==401){
             String actualErrorMessage = response.jsonPath().getString("message");
             String staticPartOfExpectedMessage = message;
-            Assert.assertTrue(actualErrorMessage.equals(staticPartOfExpectedMessage), "Error message does not match");
+            Assert.assertTrue(actualErrorMessage.startsWith(staticPartOfExpectedMessage), "Error message does not match");
         }
         else{
 

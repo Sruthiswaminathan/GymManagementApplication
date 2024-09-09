@@ -8,7 +8,7 @@ Feature: User Login
 
     Examples:
       | email                       | password           | status |
-      | Hemavathbibij1inhh@gmail.com | HHpnemajhjwnhh@2001  | 200    |
+      | Hehhh@gmail.com | HHpmawnj@20    | 200    |
 
   Scenario Outline: Login with various email and password combinations
     Given I am the user trying to login
@@ -21,7 +21,7 @@ Feature: User Login
     Examples:
       | email                     | password        | status | errorMessage                         |
       | [empty]                   | Sweetsyhnw@2001 | 400    | Email must contain an '@' symbol.                |
-      | Hemavathbibij1inhh@gmail.com | [empty]         | 400    | Incorrect username or password. (Service: CognitoIdentityProvider, Status Code: 400, |
-      | Hemavathbibij1inhh@gmail     | HHpnemajhjwnhh@2001 | 400    | Email must contain a domain with a '.' symbol. |
-      | Hemavathbibij1inhh@gmail.com  | wrongPassword   | 400    | Incorrect username or password. (Service: CognitoIdentityProvider, Status Code: 400,     |
-      | Hemavathbiij1inh@gmail.com     | Sweetsyhnw@2001 | 400    | User does not exist. (Service: CognitoIdentityProvider, Status Code: 400,                |
+      | Hemavathbibij1inhhh@gmail.com | [empty]         | 400    | Failed to authenticate user. Invalid credentials. |
+      | Hemavathbibij1inhhh@gmail     | HHpnemajhjwnhhj@2001 | 400    | Email must contain a domain with a '.' symbol. |
+      | Hemavathbibij1inhhh@gmail.com  | wrongPassword   | 400    | Failed to authenticate user. Invalid credentials.     |
+      | Hemavathbiij1inh@gmail.com     | Sweetsyhnw@2001 | 400    | Failed to authenticate user. Invalid credentials.                |
