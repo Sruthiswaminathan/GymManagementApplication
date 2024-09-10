@@ -9,7 +9,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
         <!-- Cucumber for Java -->
             <dependency>
                 <groupId>io.cucumber</groupId>
