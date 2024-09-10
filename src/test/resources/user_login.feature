@@ -4,24 +4,24 @@ Feature: User Login
     Given I am the user trying to login
     When the user provides the login details with email "<email>" and password "<password>"
     Then I should receive a <status> statuscode
-    And the response should contain tokens idToken, accessToken, refreshToken
+    And the response should contain tokens idToken, accessToken, refreshToken and "<message>"
 
     Examples:
-      | email                       | password           | status |
-      | Hehhh@gmail.com | HHpmawnj@20    | 200    |
+      | email          | password  | status | message                      |
+      | admin@epam.com | Admin@123 | 200    | User logged in successfully. |
 
   Scenario Outline: Login with various email and password combinations
     Given I am the user trying to login
     When the user provides the login details with below details:
-      | email                     | password        | status | errorMessage                         |
-      | <email>                   | <password>      | <status> | <errorMessage>                       |
+      | email   | password   | status   | errorMessage   |
+      | <email> | <password> | <status> | <errorMessage> |
     Then I should receive a <status> statuscode for invalid
     And the response should contain the error message "<errorMessage>"
 
     Examples:
-      | email                     | password        | status | errorMessage                         |
-      | [empty]                   | Sweetsyhnw@2001 | 400    | Email must contain an '@' symbol.                |
-      | Hemavathbibij1inhhh@gmail.com | [empty]         | 400    | Failed to authenticate user. Invalid credentials. |
-      | Hemavathbibij1inhhh@gmail     | HHpnemajhjwnhhj@2001 | 400    | Email must contain a domain with a '.' symbol. |
-      | Hemavathbibij1inhhh@gmail.com  | wrongPassword   | 400    | Failed to authenticate user. Invalid credentials.     |
-      | Hemavathbiij1inh@gmail.com     | Sweetsyhnw@2001 | 400    | Failed to authenticate user. Invalid credentials.                |
+      | email          | password        | status | errorMessage                                      |
+      | [empty]        | Admin@123       | 400    | Email must contain an '@' symbol.                 |
+      | admin@epam.com | [empty]         | 400    | Failed to authenticate user. Invalid credentials. |
+      | admin@epam     | Admin@123       | 400    | Email must contain a domain with a '.' symbol.    |
+      | admin@epam.com | wrongPassword   | 400    | Failed to authenticate user. Invalid credentials. |
+      | admin@epam.com | Sweetsyhnw@2001 | 400    | Failed to authenticate user. Invalid credentials. |

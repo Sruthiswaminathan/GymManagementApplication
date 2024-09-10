@@ -36,8 +36,8 @@ public class UserLoginSteps {
     public void iShouldReceiveAStatuscode(int statusCode) {
         assertThat(response1.getStatusCode(), equalTo(statusCode));
     }
-    @Then("the response should contain tokens idToken, accessToken, refreshToken")
-    public void theResponseShouldContainTokens() {
+    @Then("the response should contain tokens idToken, accessToken, refreshToken and {string}")
+    public void theResponseShouldContainTokens(String message) {
         String actualIdToken = response1.jsonPath().getString("data.idToken");
         String actualAccessToken = response1.jsonPath().getString("data.accessToken");
         String actualRefreshToken = response1.jsonPath().getString("data.refreshToken");
@@ -52,6 +52,9 @@ public class UserLoginSteps {
         assertThat(actualIdToken, is(notNullValue()));  // Make sure it's not null
         assertThat(actualAccessToken, is(notNullValue()));
         assertThat(actualRefreshToken, is(notNullValue()));
+        System.out.println("Response Body: " + response1.getBody().asString());
+        String Message = response1.jsonPath().getString("message");
+        Assert.assertTrue(Message.equals(message));
     }
     @When("the user provides the login details with below details:")
     public void the_user_provides_the_login_details_with_below_details(io.cucumber.datatable.DataTable dataTable) {
