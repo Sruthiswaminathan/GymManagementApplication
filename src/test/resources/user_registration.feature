@@ -13,7 +13,7 @@ Feature: User Registration
 
     Examples:
       | fullName | email          | password                | target       | preferableActivity | status | message                                                                          |
-      | admin    | admin@epam.com | Admin@123               | loose weight | yoga               | 201    | User registered successfully.                                                    |
+      | admin    | admin09@epam.com | Admin09@123               | loose weight | yoga               | 201    | User registered successfully.                                                    |
       | admin    | admin@epam.com | Admin@123               | loose weight | yoga               | 400    | User account already exists (Service: CognitoIdentityProvider, Status Code: 400, |
       | admin    | admin@epam     | HHpnemajhjwnhhj@2001    | loose weight | yoga               | 400    | Email must contain a domain with a '.' symbol.                                   |
       | admin    |                | HHpnemajhjwnhhj@2001    | loose weight | yoga               | 400    | Email cannot be null.                                                            |

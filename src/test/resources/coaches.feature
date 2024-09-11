@@ -1,6 +1,5 @@
 Feature: Retrieve Coaches Information
 
-
   Background: The user is logged in
     Given the API endpoint is present at the Config file
     And the user is authenticated with correct credentials

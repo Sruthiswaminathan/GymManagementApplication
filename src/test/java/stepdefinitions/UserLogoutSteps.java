@@ -13,6 +13,8 @@ import java.util.Properties;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.testng.AssertJUnit.assertTrue;
+
 public class UserLogoutSteps {
     private Response response;
     private Response loginResponse;
@@ -68,6 +70,33 @@ public class UserLogoutSteps {
     public void theResponseShouldContainTheMessage(String message) {
         String Message = response.jsonPath().getString("message");
         Assert.assertEquals(message, Message);
+    }
+
+
+
+    @When("I send a POST request with {string} and {string} to the logout endpoint")
+    public void iSendAPOSTRequestWithAndToTheLogoutEndpoint(String idToken1, String accessToken2) {
+        response = given()
+                .header("Authorization", "Bearer " + idToken1)
+                .contentType("application/json")
+                .body("{\"accessToken\": \"" + accessToken2 + "\"}")
+                .post(Config.BASE_URL+ logoutEndpoint);
+        System.out.println("ReponseBody:"+response.getBody().asString());
+    }
+    @Then("I should receive a {int} status code for logout unsuccessful")
+    public void iShouldReceiveAStatusCodeStatusCodeForLogoutUnSuccessful(int statusCode) {
+        assertThat(response.getStatusCode(), equalTo(statusCode));
+    }
+    @And("the response should contain the message {string} for unsuccessful")
+    public void theResponseShouldContainTheMessageForUnsuccessful(String message) {
+        if(response.getStatusCode()==401) {
+            String Message = response.jsonPath().getString("message");
+            assertTrue(Message.equals(message));
+        }
+        else if(response.getStatusCode()==404){
+            String Message = response.jsonPath().getString("errorMessage");
+            assertTrue(Message.startsWith(message));
+        }
     }
 
 }
