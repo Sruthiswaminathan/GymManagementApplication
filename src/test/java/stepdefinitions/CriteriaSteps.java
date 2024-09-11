@@ -18,6 +18,7 @@ public class CriteriaSteps {
     private String role;
     private Response getResponse;
     private Response putResponse;
+    private Response deleteResponse;
     private Response loginResponse;
     private Response postResponse;
     private String loginEndpoint;
@@ -70,6 +71,17 @@ public class CriteriaSteps {
     public void iShouldReceiveAStatusCode(Integer statusCode) {
         assertThat(getResponse.getStatusCode(), equalTo(statusCode));
     }
+    @And("the response body should contain message as {string} for get")
+    public void theResponseBodyShouldContainMessageAsForGET(String expectedMessage) {
+        if(getResponse.getStatusCode()==200) {
+            getResponse.then().body("message", equalTo(expectedMessage));
+        }
+        else{
+            getResponse.then().body("errorMessage", equalTo(expectedMessage));
+        }
+    }
+
+
 
 
     //put
@@ -94,9 +106,14 @@ public class CriteriaSteps {
     public void theResponseShouldReturnAStatusCode(int statusCode) {
         putResponse.then().statusCode(statusCode);
     }
-    @And("the response body should contain message as {string}")
-    public void theResponseBodyShouldContainMessageAs(String expectedMessage) {
-        putResponse.then().body("message", equalTo(expectedMessage));
+    @And("the response body should contain message as {string} for put")
+    public void theResponseBodyShouldContainMessageAsForPUT(String expectedMessage) {
+        if(putResponse.getStatusCode()==200) {
+            putResponse.then().body("message", equalTo(expectedMessage));
+        }
+        else{
+            putResponse.then().body("errorMessage", equalTo(expectedMessage));
+        }
     }
 
 
@@ -127,7 +144,12 @@ public class CriteriaSteps {
     }
     @And("the response body should contain message {string} for POST")
     public void theResponseBodyShouldContainMessageForPost(String expectedMessage) {
-        postResponse.then().body("message", equalTo(expectedMessage));
+        if(postResponse.getStatusCode()==200) {
+            postResponse.then().body("message", equalTo(expectedMessage));
+        }
+        else{
+            postResponse.then().body("errorMessage", equalTo(expectedMessage));
+        }
     }
 
 
@@ -150,7 +172,7 @@ public class CriteriaSteps {
     }
     @When("the user sends a DELETE request to remove criteria with email {string}")
     public void theUserSendsADeleteRequestToRemoveCriteria(String email1) {
-        postResponse = given()
+        deleteResponse = given()
                 .header("Authorization", "Bearer " + idToken)
                 .header("Content-Type", "application/json")
                 .when()
@@ -160,11 +182,11 @@ public class CriteriaSteps {
     }
     @Then("the response should return a status code {int} for DELETE")
     public void theResponseShouldReturnAStatusCodeForDelete(int statusCode) {
-        postResponse.then().statusCode(statusCode);
+        deleteResponse.then().statusCode(statusCode);
     }
     @And("the response body should contain message {string} for DELETE")
     public void theResponseBodyShouldContainMessageForDelete(String expectedMessage) {
-        postResponse.then().body("message", equalTo(expectedMessage));
+        deleteResponse.then().body("message", equalTo(expectedMessage));
     }
 
 

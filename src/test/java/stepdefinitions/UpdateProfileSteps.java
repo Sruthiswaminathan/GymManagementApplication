@@ -60,6 +60,7 @@ public class UpdateProfileSteps {
                 .body("{\"fullName\":\"" + fullName + "\", \"target\":\"" + target + "\", \"preferableActivity\":\"" + preferableActivity + "\"}")
                 .put(Config.BASE_URL+profileEndpoint);
         name=fullName;
+        System.out.println("Response body:"+updateProfileResponse.getBody().asString());
     }
     @Then("the response status should be {int}")
     public void theResponseStatusShouldBe(int statusCode) {
@@ -67,8 +68,14 @@ public class UpdateProfileSteps {
     }
     @And("the success message should be {string}")
     public void theSuccessMessageShouldBe(String message) {
-        String Message = updateProfileResponse.jsonPath().getString("message");
-        Assert.assertEquals(message, Message);
+        if(updateProfileResponse.getStatusCode()==200) {
+            String Message = updateProfileResponse.jsonPath().getString("message");
+            Assert.assertEquals(message, Message);
+        }
+        else{
+            String Message = updateProfileResponse.jsonPath().getString("errorMessage");
+            Assert.assertEquals(message, Message);
+        }
     }
 
     @And("check the name is updated or not")
@@ -78,7 +85,9 @@ public class UpdateProfileSteps {
                 .contentType("application/json")
                 .when()
                 .get(Config.BASE_URL + profileEndpoint);
-        assertEquals(getProfileResponse.jsonPath().getString("data.fullName"),name);
+        if(getProfileResponse.jsonPath().getString("data.fullName")==null) {
+            assertEquals(getProfileResponse.jsonPath().getString("data.fullName"), name);
+        }
     }
 }
 

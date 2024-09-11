@@ -13,5 +13,14 @@ Feature: Retrieve User's Profile Information
     And the response message should be "<message>"
     And the response should include fullName, email, target, preferableActivity
     Examples:
-      | message |
-      |  User data retrieved successfully.|
+      | message                           |
+      | User data retrieved successfully. |
+
+  Scenario Outline: Retrieve user's profile information with invalidtoken
+    Given the API endpoint for profile is "/profile" and idToken "<idToken>"
+    When I send a GET request to the profile endpoint for invalid
+    Then the response status code should be 401 for invalid
+    And the response message should be "<message>"
+    Examples:
+      | idToken        | message      |
+      | nednmbekjhdjkw | Unauthorized |
