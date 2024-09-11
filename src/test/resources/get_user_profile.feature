@@ -3,8 +3,6 @@ Feature: Retrieve User's Profile Information
   Background: The user is logged in
     Given the API endpoint is present at Config file
     When the user is authenticated correct credentials with above email and password
-      | email    | admin@epam.com    |
-      | password | Admin@123 |
     And the response contains the valid id token
 
 

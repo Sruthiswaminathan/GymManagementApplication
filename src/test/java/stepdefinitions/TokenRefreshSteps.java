@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import java.util.Map;
+import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,6 +19,15 @@ public class TokenRefreshSteps {
     String refreshToken;
     private String loginEndpoint;
     Response loginResponse;
+    private Properties config;
+
+    public TokenRefreshSteps() {
+        try {
+            config = Config.loadConfig();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 //login
     @Given("the API endpoint is present")
     public void theAPIEndpointIsPresent() {
@@ -25,11 +35,12 @@ public class TokenRefreshSteps {
         loginEndpoint = "/login";
     }
     @And("the user is authenticated with below email and password")
-    public void theUserIsAuthenticatedWithBelowEmailAndPassword(DataTable dataTable) {
-        Map<String,String> userDetails = dataTable.asMap(String.class, String.class);
+    public void theUserIsAuthenticatedWithBelowEmailAndPassword() {
+        String email = config.getProperty("email");
+        String password = config.getProperty("password");
         loginResponse = given()
                 .contentType("application/json")
-                .body(userDetails)
+                .body("{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}")
                 .when()
                 .post(Config.BASE_URL+loginEndpoint);
     }
@@ -38,20 +49,21 @@ public class TokenRefreshSteps {
         refreshToken = loginResponse.jsonPath().getString("data.refreshToken");
     }
 
-    //refreshtoken
+
     @Given("I have successfully logged in")
     public void iHaveSuccessfullyLoggedInAndRetrievedTheTokensFromThePreviousScenario() {
+        System.out.println("After login collected the idToken");
     }
     @When("I use the refresh token to request new tokens")
     public void iSendAPostRequestToTheRefreshEndpoint() {
         response = given()
                 .contentType("application/json")
                 .body("{\"refreshToken\": \"" + refreshToken + "\"}")
-                .post(Config.BASE_URL + refreshEndpoint);
+                .post(Config.BASE_URL+ refreshEndpoint);
     }
-    @Then("I should receive a {int} status code")
-    public void theStatusCodeShouldBe(int statusCode) {
-        assertThat(response.getStatusCode(), equalTo(statusCode));
+    @Then("I should receive a message as {string}")
+    public void iShouldReceiveAMessageAs(String message) {
+        assertThat(response.jsonPath().getString("message"), equalTo(message));
     }
     @And("the response should contain \"idToken\" and \"accessToken\" that are not empty")
     public void iShouldReceiveANewAccessTokenAndIdToken() {

@@ -2,20 +2,20 @@ Feature: User Login
 
   Scenario Outline: Login with valid credentials
     Given I am the user trying to login
-    When the user provides the login details with email "<email>" and password "<password>"
-    Then I should receive a <status> statuscode
+    When the user provides the login details with email and password
+    Then I should receive a <status> status code
     And the response should contain tokens idToken, accessToken, refreshToken and "<message>"
 
     Examples:
-      | email          | password  | status | message                      |
-      | admin@epam.com | Admin@123 | 200    | User logged in successfully. |
+      | status | message                      |
+      | 200    | User logged in successfully. |
 
   Scenario Outline: Login with various email and password combinations
     Given I am the user trying to login
     When the user provides the login details with below details:
       | email   | password   | status   | errorMessage   |
       | <email> | <password> | <status> | <errorMessage> |
-    Then I should receive a <status> statuscode for invalid
+    Then I should receive a <status> status code for invalid
     And the response should contain the error message "<errorMessage>"
 
     Examples:

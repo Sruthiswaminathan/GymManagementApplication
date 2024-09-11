@@ -7,12 +7,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.testng.Assert;
-
 import java.util.Map;
+import java.util.Properties;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-
 public class UserLogoutSteps {
     private Response response;
     private Response loginResponse;
@@ -20,19 +20,28 @@ public class UserLogoutSteps {
     private String loginEndpoint;
     String idToken;
     String accessToken;
+    private Properties config;
+
+    public UserLogoutSteps() {
+        try {
+            config = Config.loadConfig();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //login
-    @Given("the API endpoint is present at {string}")
-    public void theAPIEndpointIsPresentAt(String arg0) {
+    @Given("the Url is present in Config file")
+    public void theUrlIsPresentInConfigFile() {
         logoutEndpoint="/logout";
         loginEndpoint = "/login";
-        System.out.println(loginEndpoint + " "+ logoutEndpoint);
     }
     @And("the user is authenticated with email and password")
-    public void theUserIsAuthenticatedWithEmailAndPassword(DataTable dataTable) {
-        Map<String,String> userDetails = dataTable.asMap(String.class, String.class);
+    public void theUserIsAuthenticatedWithEmailAndPassword() {
+        String email = config.getProperty("email");
+        String password = config.getProperty("password");
         loginResponse = given()
                 .contentType("application/json")
-                .body(userDetails)
+                .body("{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}")
                 .when()
                 .post(Config.BASE_URL+loginEndpoint);
     }
@@ -57,9 +66,8 @@ public class UserLogoutSteps {
     }
     @And("the response should contain the message {string}")
     public void theResponseShouldContainTheMessage(String message) {
-        System.out.println("Response Body: " + response.getBody().asString());
         String Message = response.jsonPath().getString("message");
-        Assert.assertTrue(Message.equals(message));
+        Assert.assertEquals(message, Message);
     }
 
 }

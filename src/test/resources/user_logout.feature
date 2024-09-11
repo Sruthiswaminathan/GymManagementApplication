@@ -1,10 +1,8 @@
 Feature: User Logout Functionality
 
   Background: The user is logged in
-    Given the API endpoint is present at "baseURI"
+    Given the Url is present in Config file
     And the user is authenticated with email and password
-      | email    | admin@epam.com    |
-      | password | Admin@123 |
     And the response contains a valid id token and access token
 
   Scenario Outline: User attempts to log out with different token conditions
