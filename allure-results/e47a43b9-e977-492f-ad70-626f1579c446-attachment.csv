@@ -1,0 +1,2 @@
+email	password	status	errorMessage
+admin@epam.com	wrongPassword	400	Failed to authenticate user. Invalid credentials.

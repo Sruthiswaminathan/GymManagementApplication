@@ -1,0 +1,2 @@
+email	password	status	errorMessage
+admin@epam	Admin@123	400	Email must contain a domain with a '.' symbol.
