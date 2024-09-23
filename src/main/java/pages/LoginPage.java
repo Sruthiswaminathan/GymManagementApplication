@@ -19,7 +19,7 @@ public class LoginPage {
     }
 
     public void openPage() {
-        driver.get("http://ec2-52-221-11-140.ap-southeast-1.compute.amazonaws.com/login");
+        driver.get("http://52.221.11.140/login");
         driver.manage().window().maximize();
     }
 

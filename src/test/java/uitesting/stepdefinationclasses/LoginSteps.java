@@ -1,10 +1,10 @@
 package uitesting.stepdefinationclasses;
 
+import basetest.BrowserFactoryDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.EnergyXGain.BrowserFactory.BrowserFactory;
 import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
@@ -16,7 +16,7 @@ public class LoginSteps {
     private LoginPage loginPage;
 
     public LoginSteps() {
-        this.driver = BrowserFactory.getDriver();
+        this.driver = BrowserFactoryDriver.getDriver();
         this.loginPage = new LoginPage(driver);
     }
 
@@ -102,8 +102,8 @@ public class LoginSteps {
 
     @Then("close the tab")
     public void closeTheTab() {
-        BrowserFactory.cleanUp();
-        this.driver=BrowserFactory.getDriver();
+        BrowserFactoryDriver.cleanUp();
+        this.driver=BrowserFactoryDriver.getDriver();
         this.loginPage=new LoginPage(driver);
 
     }
