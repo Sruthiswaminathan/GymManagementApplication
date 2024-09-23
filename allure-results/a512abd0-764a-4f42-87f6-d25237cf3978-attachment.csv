@@ -1,2 +1,0 @@
-email	password	status	errorMessage
-[empty]	Admin@123	400	Email must contain an '@' symbol.
