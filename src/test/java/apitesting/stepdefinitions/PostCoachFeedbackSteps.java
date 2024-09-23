@@ -1,6 +1,6 @@
 package apitesting.stepdefinitions;
 
-import apitesting.apiurl.Config;
+import apitesting.stepdefinitions.Config;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -37,7 +37,6 @@ public class PostCoachFeedbackSteps {
             e.printStackTrace();
         }
     }
-
 
     @Given("the API endpoint is present at the Config file for post coaches feedback")
     public void theAPIEndpointIsPresentAtTheConfigFileForPostCoachesFeedback() {
@@ -130,7 +129,7 @@ public class PostCoachFeedbackSteps {
 
         String fullUrl = Config.BASE_URL + feedbackEndpoint;
         System.out.println("Sending POST request to: " + fullUrl);
-        System.out.println("Response body: " + postFeedbackResponse.getBody().asString());
+     //   System.out.println("Response body: " + postFeedbackResponse.getBody().asString());
 
 
         postFeedbackResponse = given()
@@ -141,14 +140,14 @@ public class PostCoachFeedbackSteps {
                 .post(Config.BASE_URL + feedbackEndpoint);
 
         System.out.println("Response status code: " + postFeedbackResponse.getStatusCode());
-        System.out.println("Response body: " + postFeedbackResponse.getBody().asString());
+       // System.out.println("Response body: " + postFeedbackResponse.getBody().asString());
 
     }
 
     @Then("successful response should be {int}")
     public void successfulResponseShouldBe(int statusCode) {
         assertEquals(statusCode, postFeedbackResponse.getStatusCode());
-        System.out.println("Response body: " + postFeedbackResponse.getBody().asString());
+
     }
 
     @Then("the unsuccessful response should be {int}")
@@ -185,6 +184,4 @@ public class PostCoachFeedbackSteps {
         requestBody.put("notes", feedbackDetails.get("notes"));
         requestBody.put("createDate", feedbackDetails.get("createDate")); // Assuming createDate is invalid
     }
-
-
 }

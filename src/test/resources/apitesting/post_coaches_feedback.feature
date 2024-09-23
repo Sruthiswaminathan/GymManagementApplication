@@ -1,7 +1,10 @@
-Feature: Submit Coach Feedback  Background:
-Given the API endpoint is present at the Config file for post coaches feedback
-And the user is authenticated with correct credentials for coach feedback
-And the response contains valid id token for logging
+Feature: Submit Coach Feedback
+
+  Background:
+    Given the API endpoint is present at the Config file for post coaches feedback
+    And the user is authenticated with correct credentials for coach feedback
+    And the response contains valid id token for logging
+
   Scenario: Submit valid coach feedback
     Given the API endpoint for coach feedback is "/coaches/feedback"
     And the feedback details are valid for coach feedback
