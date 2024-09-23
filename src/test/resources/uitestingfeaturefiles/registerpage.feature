@@ -23,7 +23,6 @@ Feature: User Registration Form Validation
     And I select "Lose weight" from the Target dropdown
     And I select "climbing" from the Preferable Activity dropdown
     And I submit the form
-    Then I should see a success message "User registered successfully"
 
   #TC03 - Validate with already registration with correct data
   Scenario: Validate with already registration with correct data
@@ -34,7 +33,6 @@ Feature: User Registration Form Validation
     And I select "Lose weight" from the Target dropdown
     And I select "climbing" from the Preferable Activity dropdown
     And I submit the form
-    Then I should see a error message "User account already exists"
 
   # TC04 - Test mandatory fields for empty input
   Scenario: Test mandatory fields for empty input

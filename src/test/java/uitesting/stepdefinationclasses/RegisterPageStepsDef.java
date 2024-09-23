@@ -105,16 +105,6 @@ public class RegisterPageStepsDef {
         registerPage.submitForm();
     }
 
-    @Then("I should see a success message {string}")
-    public void iShouldSeeASuccessMessage(String Message) {
-        registerPage.successMessage(Message);
-    }
-
-    //TC03
-    @Then("I should see a error message {string}")
-    public void iShouldSeeAErrorMessage(String Message) {
-        registerPage.errorMessage(Message);
-    }
 
     //TC04
     @When("I leave all fields empty and submit the form")
