@@ -30,6 +30,7 @@ public class UserLogoutSteps {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     //login
     @Given("the Url is present in Config file")

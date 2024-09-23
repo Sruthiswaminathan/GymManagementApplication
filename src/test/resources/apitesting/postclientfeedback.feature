@@ -5,6 +5,7 @@ Feature: Post Client Feedback
     And the user is authenticated with correct credentials for client feedback
     And the response contains valid id token
 
+
   Scenario: Submit client feedback with valid input
     Given the API endpoint for client feedback is "/clients/feedback"
     And the feedback details are provided

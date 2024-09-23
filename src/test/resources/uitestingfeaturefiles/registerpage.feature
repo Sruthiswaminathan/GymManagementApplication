@@ -111,6 +111,7 @@ Feature: User Registration Form Validation
     When I navigate through fields using the Tab key
     Then the fields should focus in a logical, sequential order
 
+
   #TC11 - Ensure field tab order is sequential
   Scenario: Password visibility toggle
     Given I navigate to the registration page

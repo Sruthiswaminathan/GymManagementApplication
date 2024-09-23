@@ -280,6 +280,7 @@ public class RegisterPage {
         WebElement visibilityToggleButton = driver.findElement(By.xpath("//button[@data-testid='toggle-password']"));
         visibilityToggleButton.click();
     }
+
 }
 
 

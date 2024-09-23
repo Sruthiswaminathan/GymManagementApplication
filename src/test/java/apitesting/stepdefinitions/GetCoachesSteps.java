@@ -25,6 +25,7 @@ public class GetCoachesSteps {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     @Given("the API endpoint is present at the Config file")
     public void theApiEndpointIsPresentAtTheConfigFile() {

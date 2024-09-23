@@ -27,6 +27,7 @@ public class GetProfileSteps {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 //login
     @Given("the API endpoint is present at Config file")

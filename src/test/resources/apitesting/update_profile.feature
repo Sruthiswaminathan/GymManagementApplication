@@ -5,6 +5,7 @@ Feature: Update User's Profile Information
     And the user is authenticated with email and password details
     And checking the response contains a correct valid id token
 
+
   Scenario Outline: Update profile information for different scenarios
     Given the user has a valid token and is authenticated "/profile"
     When the user sends a PUT request to the profile endpoint with the updated "<fullName>", "<target>", "<preferableActivity>"

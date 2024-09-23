@@ -5,6 +5,7 @@ Feature: Retrives Workout based on coach id
     And the user is authenticated with correct  below credentials with email and password
     And the response should include correct valid id token and to be stored
 
+
   Scenario: Successfully retrieve all workouts of a coach with valid Bearer token
     Given the user has a coach ID "coach76677123"
     When the user sends a GET request to retrieve all workouts of the coach with BearerToken

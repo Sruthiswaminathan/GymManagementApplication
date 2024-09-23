@@ -5,6 +5,7 @@ Feature: Criteria Management
     And the user is authenticated correct credentials with email and password
     And the response stores the valid id token
 
+
   Scenario Outline: Perform fetch the criteria using email
     Given I have a valid email "<email>" for criteria
     When I send a get request

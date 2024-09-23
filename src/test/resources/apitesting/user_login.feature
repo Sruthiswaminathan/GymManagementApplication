@@ -6,6 +6,7 @@ Feature: User Login
     Then I should receive a <status> status code
     And the response should contain tokens idToken, accessToken, refreshToken and "<message>"
 
+
     Examples:
       | status | message                      |
       | 200    | User logged in successfully. |

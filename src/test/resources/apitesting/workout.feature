@@ -5,6 +5,7 @@ Feature: Crud Operation Workout Management
     And the user is authenticated with correct credentials with email and password
     And the response should include correct valid id token
 
+
   Scenario: Successfully create a new workout with valid Bearer token
     Given the user has the workout details
       | name     | Daily Caxrdiho       |

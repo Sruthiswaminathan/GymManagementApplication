@@ -27,6 +27,7 @@ public class UserRegistrationSteps {
                 .when()
                 .post(Config.BASE_URL+endpoint);
     }
+
     @Then("I should receive a {int} status")
     public void iShouldReceiveAStatus(Integer status) {
         assertThat(response.statusCode(), is(status));

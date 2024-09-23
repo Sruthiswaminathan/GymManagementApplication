@@ -5,6 +5,7 @@ Feature: Retrives Workout based on client id
     And the user is authenticated with below credentials with email and password
     And the response should contain a correct valid id token
 
+
   Scenario: Successfully retrieve all workouts of a client with valid Bearer token
     Given the user has a client ID "client46556456"
     When the user sends a GET request to retrieve all workouts of the client with BearerToken

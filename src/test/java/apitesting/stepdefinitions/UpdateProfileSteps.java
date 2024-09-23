@@ -28,6 +28,7 @@ public class UpdateProfileSteps {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
     @Given("the url is fetched from Config file")
     public void theUrlIsFetchedFromConfigFile() {

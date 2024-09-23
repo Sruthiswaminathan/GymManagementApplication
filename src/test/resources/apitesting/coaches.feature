@@ -5,6 +5,7 @@ Feature: Retrieve Coaches Information
     And the user is authenticated with correct credentials
     And the response contains a valid id token
 
+
   Scenario: Retrieve list of coaches with valid status code
     Given the API endpoint for coaches is "/coaches"
     When I send a GET request to the coaches endpoint

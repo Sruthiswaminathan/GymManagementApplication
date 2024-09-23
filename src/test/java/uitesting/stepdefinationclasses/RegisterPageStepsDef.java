@@ -176,6 +176,7 @@ public class RegisterPageStepsDef {
     @Then("the fields should focus in a logical, sequential order")
     public void the_fields_should_focus_in_a_logical_sequential_order() {
         registerPage.verifyTabOrder();
+
     }
 
 

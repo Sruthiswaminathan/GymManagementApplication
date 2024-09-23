@@ -71,6 +71,7 @@ public class WorkoutSteps {
                 .thenReturn();
         System.out.println("Response body:"+postResponse.getBody().asString());
     }
+
     @Then("For post method the response should return a status code {int}")
     public void forPostMEthodtheResponseShouldReturnAStatusCode(int statusCode) {
        assertEquals(postResponse.getStatusCode(),statusCode);

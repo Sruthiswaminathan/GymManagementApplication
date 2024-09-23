@@ -5,6 +5,7 @@ Feature: Retrieve Specific Coach Information by ID
     And the user is authenticated with below credentials for Coaches
     And the response contains a valid token
 
+
   Scenario: Retrieve a coach's details by valid ID with status code 200
     Given the API endpoint for coach details is "/coaches/{id}"
     When I send a GET request to the coach details endpoint with ID "8ad92bcc-1c28-4786-b8be-c04d13c7dbd3"

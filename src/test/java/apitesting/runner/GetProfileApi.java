@@ -9,4 +9,5 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "json:build/reports/cucumber/report.json", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"})
 public class GetProfileApi {
 
+
 }

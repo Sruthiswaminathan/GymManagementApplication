@@ -11,6 +11,7 @@ Feature: User Registration
     Then I should receive a <status> status
     And the response should contain a message "<message>"
 
+
     Examples:
       | fullName | email          | password                | target       | preferableActivity | status | message                                                                          |
       | admin    | afdmins68768878@epam.com | Admins99867@123               | loose weight | yoga               | 201    | User registered successfully.                                                    |

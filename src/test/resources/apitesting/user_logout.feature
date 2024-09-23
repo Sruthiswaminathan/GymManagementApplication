@@ -5,6 +5,7 @@ Feature: User Logout Functionality
     And the user is authenticated with email and password
     And the response contains a valid id token and access token
 
+
   Scenario Outline: User attempts to log out with successful token conditions
     When I send a POST request to the logout endpoint
     Then I should receive a <statusCode> status code for logout successful

@@ -39,6 +39,7 @@ public class CriteriaSteps {
         criteriaEndpoint = "/criteria";
         loginEndpoint = "/login";
     }
+
     @And("the user is authenticated correct credentials with email and password")
     public void theUserIsAuthenticatedCorrectCredentialsWithEmailAndPassword() {
         String email = config.getProperty("email");

@@ -65,6 +65,7 @@ public class WorkoutClientSteps {
                 .thenReturn();
         System.out.println("Response body: " + getResponse.getBody().asString());
     }
+
     @Then("the response should return a status code {int} for GET clients")
     public void theResponseShouldReturnAStatusCodeForGetClients(int statusCode) {
         System.out.println(getResponse.getStatusCode());

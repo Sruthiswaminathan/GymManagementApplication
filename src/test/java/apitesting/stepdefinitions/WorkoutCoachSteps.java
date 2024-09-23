@@ -28,6 +28,7 @@ public class WorkoutCoachSteps {
         }
     }
     //login
+
     @Given("the url is collected and stored from Config file")
     public void theUrlIsCollectedAndStoredFromConfigFile() {
         loginEndpoint = "/login";

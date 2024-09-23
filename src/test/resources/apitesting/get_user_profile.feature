@@ -6,6 +6,7 @@ Feature: Retrieve User's Profile Information
     And the response contains the valid id token
 
 
+
   Scenario Outline: Retrieve user's profile information with valid status code
     Given the API endpoint for profile is "/profile"
     When I send a GET request to the profile endpoint
