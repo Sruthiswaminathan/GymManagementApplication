@@ -62,7 +62,7 @@ public class CriteriaSteps {
         this.email = email;
     }
     @When("I send a get request")
-    public void i_send_a_request(){
+    public void iSendARequest(){
         getResponse = given()
                 .header("Authorization", "Bearer " + idToken)
                 .contentType("application/json")

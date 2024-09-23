@@ -159,12 +159,12 @@ public class RegisterPageStepsDef {
 
     //TC10
     @When("I navigate through fields using the Tab key")
-    public void i_navigate_through_fields_using_the_tab_key() {
+    public void iNavigateThroughFieldsUsingTheTabKey() {
         registerPage.nameField.click();
     }
 
     @Then("the fields should focus in a logical, sequential order")
-    public void the_fields_should_focus_in_a_logical_sequential_order() {
+    public void theFieldsShouldFocusInALogicalSequentialOrder() {
         registerPage.verifyTabOrder();
 
     }

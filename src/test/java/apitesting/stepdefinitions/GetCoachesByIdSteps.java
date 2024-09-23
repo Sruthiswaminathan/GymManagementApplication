@@ -70,7 +70,7 @@ public class GetCoachesByIdSteps {
         getCoachByIdResponse.then().body("message", equalTo(expectedMessage));
     }
     @Then("the response should include {string}, {string}, {string}, {string}, {string}, and {string}")
-    public void the_response_should_include_and(String string, String string2, String string3, String string4, String string5, String string6) {
+    public void theResponseShouldIncludeAnd(String string, String string2, String string3, String string4, String string5, String string6) {
         getCoachByIdResponse.then().body("data.id", notNullValue())
                 .body("data.name", notNullValue())
                 .body("data.summary", notNullValue())

@@ -21,27 +21,27 @@ public class LoginSteps {
     }
 
     @Given("I open the Gym Management Application")
-    public void i_open_the_gym_management_application() {
+    public void iOpenTheGymManagementApplication() {
         loginPage.openPage();
     }
 
     @When("I enter {string}")
-    public void i_enter(String email) {
+    public void iEnter(String email) {
         loginPage.enterEmail(email);
     }
 
     @Then("I enter the {string}")
-    public void i_enter_the(String password) {
+    public void iEnterThe(String password) {
         loginPage.enterPassword(password);
     }
 
     @Then("I click Login button")
-    public void i_click_login_button() {
+    public void iClickLoginButton() {
         loginPage.clickLoginButton();
     }
 
     @Then("I should see the {string}")
-    public void i_should_see_the(String expectedErrorMessage) {
+    public void iShouldSeeThe(String expectedErrorMessage) {
         String actualErrorMessage = loginPage.errorMessage();
         assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -58,7 +58,7 @@ public class LoginSteps {
 
 
     @Then("^I should get \"([^\"]*)\"$")
-    public void i_should_get(String expectedMessage) {
+    public void iShouldGet(String expectedMessage) {
         String actualMessage = loginPage.successMessage();
         assertEquals(expectedMessage, actualMessage);
     }
