@@ -19,7 +19,7 @@ public class WorkoutPage {
 
     public WorkoutPage(WebDriver driver1) {
         this.driver = driver1;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public boolean isDashboardPageDisplayed() {
@@ -188,6 +188,12 @@ public class WorkoutPage {
                 starElements.get(i).click();
             }
         }
+    }
+
+    public String invalidErrorMessage() {
+        WebElement errorMsgElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'Toastify__toast-body')]//div[contains(text(), 'Notes should not be empty')]")));
+        errorMsgElement.isDisplayed();
+        return errorMsgElement.getText();
     }
 }
 

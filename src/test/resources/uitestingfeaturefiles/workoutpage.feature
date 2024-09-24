@@ -30,4 +30,11 @@ Feature: Workout Page
     When the user views the finished workout for "Fitness" on date "28/9/2024"
     When the user leaves feedback with rating "5" and comments "Great workout!"
 
+  @LeaveFeedback
+  Scenario: Leave a feedback for finished workout with empty notes
+    When the user navigates to the Workout page
+    When the user views the finished workout for "Climbing" on date "26/9/2024"
+    When the user leaves feedback with rating "5" and comments ""
+    Then I should get  the error as "Notes should not be empty"
+
 

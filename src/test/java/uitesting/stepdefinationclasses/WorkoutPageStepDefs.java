@@ -11,6 +11,8 @@ import pages.LoginPage;
 import pages.WorkoutPage;
 import uitesting.apiurls.Config1;
 import java.util.Properties;
+
+import static org.junit.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class WorkoutPageStepDefs {
@@ -92,5 +94,11 @@ public class WorkoutPageStepDefs {
     @And("the user leaves feedback with rating {string} and comments {string}")
     public void theUserClicksOnTheLeaveFeedbackWithRatingAndComments(String rating,String comments) {
         workoutPage.leaveFeedback(rating, comments);
+    }
+
+    @Then("I should get  the error as {string}")
+    public void iShouldGetTheErrorAs(String InvalidErrorMessage) {
+        String actualInvalidErrorMessage = workoutPage.invalidErrorMessage();
+        assertEquals(InvalidErrorMessage,actualInvalidErrorMessage);
     }
 }
