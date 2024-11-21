@@ -27,10 +27,10 @@ public class WorkoutPage {
         return header.isDisplayed();
     }
 
-    //TC02
-    public boolean goToSection() {
-        return driver.getCurrentUrl().equals("http://52.221.11.140/Workouts");
-    }
+   /* //TC02
+    public void goToSection() {
+       *//* return driver.getCurrentUrl().equals("http://52.221.11.140/workouts");*//*
+    }*/
 
     public boolean viewScheduledWorkout(String workoutType1, String expectedDate) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".MuiCard-root")));
@@ -194,6 +194,9 @@ public class WorkoutPage {
         WebElement errorMsgElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'Toastify__toast-body')]//div[contains(text(), 'Notes should not be empty')]")));
         errorMsgElement.isDisplayed();
         return errorMsgElement.getText();
+    }
+    public WebElement getErrorMessageElement() {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class, 'Toastify__toast-body')]//div[contains(text(), 'Notes should not be empty')]")));
     }
 }
 

@@ -13,13 +13,20 @@ public class LoginPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
+    /*    wait.until(ExpectedConditions.alertIsPresent()); // Wait for the alert to be present
+        Alert alert = driver.switchTo().alert(); // Switch to the alert
+        String alertText = alert.getText(); // Get the text of the alert
+        alert.accept(); // Accept the alert to close it
+        return alertText;*/
+
     public void openPage() {
-        driver.get("http://52.221.11.140/login");
+       driver.get("https://gym-frontend-team6-gym-frontend-dev.shared.edp-dev.cloudmentor.academy");
         driver.manage().window().maximize();
     }
 
@@ -27,6 +34,7 @@ public class LoginPage {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name ='email']")));
         emailField.sendKeys(email);
     }
+
 
     public void enterPassword(String password) {
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name ='password']")));
@@ -39,10 +47,12 @@ public class LoginPage {
     }
 
     public String successMessage() {
-        WebElement successMsgElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Successfully Logged In')])")));
+        WebElement successMsgElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Successfully Logged in')])")));
         return successMsgElement.getText();
     }
-
+    public WebElement getSuccessMessageElement() {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Successfully Logged In')])")));
+    }
 
     public String errorMessage() {
         WebElement inCorrectEmailOrPassword = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Incorrect username or password')])[1]")));
@@ -53,6 +63,7 @@ public class LoginPage {
         WebElement inValidEmail = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(text(), 'Invalid email address')]")));
         return inValidEmail.getText();
     }
+
     public String inValidPasswordErrorMessage() {
         WebElement inValidPassword = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(text(), 'Your password must be 8-16 characters long')]")));
         return inValidPassword.getText();
@@ -67,10 +78,11 @@ public class LoginPage {
         WebElement emptyPassword = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(text(), 'Password is required')]")));
         return emptyPassword.getText();
     }
-
+//1
 
     public void clickOnProfileButton() {
-        WebElement profileButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button'][2]")));
+        WebElement profileButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@type='button' and contains(@class, 'MuiButtonBase-root') and contains(@class, 'MuiIconButton-root')])[2]")));
+        ////button[@type='button'][2]
         profileButton.click();
     }
 
@@ -81,6 +93,14 @@ public class LoginPage {
     public String logoutMessage() {
         WebElement logoutMsgElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Successfully Logged Out')])[1]")));
         return logoutMsgElement.getText();
+    }
+
+    public WebElement getLogoutMessageElement() {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Successfully Logged Out')])[1]")));
+    }
+
+    public WebElement getErrorMessageElement() {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Incorrect username or password')])[1]")));
     }
 
 }

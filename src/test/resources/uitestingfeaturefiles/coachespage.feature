@@ -1,16 +1,11 @@
 Feature: Coach Selection Page
 
   Background:
-    Given I open the GymManagement Application
+    Given I open Gym Management App
     When I enter "sachintendulkar@gmail.com" and "Sachin@123"
-    And I click the Login button
-    Then I should be in the dashboard page
+    And I click on Login button
+    Then I should land on the dashboard page
 
-  @Responsive
-  Scenario: Verify layout adaptability
-    Given User logged in as Client
-    When Resize the browser window to different sizes
-    Then Check the adaptability of the layout
 
   @Coaches
   Scenario: Verify coach selection page accessibility

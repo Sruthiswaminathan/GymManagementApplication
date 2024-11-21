@@ -13,68 +13,63 @@ public class RegisterPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    // Web elements using @FindBy annotations
-    @FindBy(xpath = "//span[contains(text(), 'CREATE NEW ACCOUNT')]")
-    WebElement createNewAccountLink;
     @FindBy(name = "fullName")
     public WebElement nameField;
+
     @FindBy(name = "email")
     WebElement emailField;
+
     @FindBy(name = "password")
     WebElement passwordField;
+
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/div[1]/div/form/div[4]")
     WebElement targetDropdown;
+
     @FindBy(xpath="//*[@id=\"root\"]/div[1]/div[1]/div/form/div[5]")
     WebElement preferableActivityDropdown;
+
     @FindBy(xpath = "//button[contains(text(), 'Create An Account')]")
     WebElement createAccountButton;
+
     @FindBy(xpath = "//span[contains(text(), 'LOGIN HERE')]")
     WebElement loginLink;
+
     @FindBy(xpath = "//span[contains(text(), 'CREATE NEW ACCOUNT')]")
     WebElement registerLink;
-    // Constructor to initialize the PageFactory elements
+
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofMinutes(10));  // Waits for elements to be visible
-        PageFactory.initElements(driver, this);  // Initialize @FindBy elements
+        wait = new WebDriverWait(driver, Duration.ofMinutes(10));
+        PageFactory.initElements(driver, this);
     }
-    // Method to click on "CREATE NEW ACCOUNT"
     public void clickCreateNewAccount() {
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(registerLink));
         button.click();
     }
-    // Method to check if Name field is present
     public boolean isNameFieldPresent() {
         return wait.until(ExpectedConditions.visibilityOf(nameField)).isDisplayed();
     }
-    // Method to check if Email field is present
     public boolean isEmailFieldPresent() {
         return wait.until(ExpectedConditions.visibilityOf(emailField)).isDisplayed();
     }
-    // Method to check if Password field is present
     public boolean isPasswordFieldPresent() {
         return wait.until(ExpectedConditions.visibilityOf(passwordField)).isDisplayed();
     }
-    // Method to check if Target dropdown is present
     public boolean isTargetDropdownPresent() {
         return wait.until(ExpectedConditions.visibilityOf(targetDropdown)).isDisplayed();
     }
-    // Method to check if Preferable Activity dropdown is present
     public boolean isPreferableActivityDropdownPresent() {
         return wait.until(ExpectedConditions.visibilityOf(preferableActivityDropdown)).isDisplayed();
     }
-    // Method to check if Create Account button is present
     public boolean isCreateAccountButtonPresent() {
         return wait.until(ExpectedConditions.visibilityOf(createAccountButton)).isDisplayed();
     }
-    // Method to check if Login link is present
     public boolean isLoginLinkPresent() {
         return wait.until(ExpectedConditions.visibilityOf(loginLink)).isDisplayed();
     }
 
 
     //TC02
-    // Methods to interact with the registration form fields
     public void enterName(String name) {
         wait.until(ExpectedConditions.visibilityOf(nameField)).sendKeys(name);
     }
@@ -86,7 +81,7 @@ public class RegisterPage {
     }
     public void selectTargetDropdown(String option) {
         WebElement dropdownElement = wait.until(ExpectedConditions.visibilityOf(targetDropdown));
-        dropdownElement.click(); // Open the dropdown
+        dropdownElement.click();
         WebElement optionElement = dropdownElement.findElement(By.xpath("//li[contains(@role,'option') and text()='" + option + "']"));
         optionElement.click();
     }
@@ -94,13 +89,10 @@ public class RegisterPage {
     public void selectPreferableActivityDropdown(String option) {
         WebElement dropdownTrigger = wait.until(ExpectedConditions.visibilityOf(preferableActivityDropdown));
         dropdownTrigger.click();
-        // Wait for the dropdown options container to be visible
         WebElement dropdownOptionsContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//ul[contains(@class, 'MuiMenu-list')]")
         ));
-        // Print dropdown HTML for debugging
         System.out.println(dropdownOptionsContainer.getAttribute("outerHTML"));
-        // Find and click the desired option
         WebElement optionElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//ul[contains(@class, 'MuiMenu-list')]//li[@role='option' and @data-value='" + option + "']")
         ));
@@ -108,24 +100,6 @@ public class RegisterPage {
     }
     public void submitForm(){
         wait.until(ExpectedConditions.elementToBeClickable(createAccountButton)).click();
-    }
-    public boolean successMessage(String Message){
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            String xpathExpression = String.format("//div[@role='alert' and contains(text(),'%s')]", Message);
-            WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathExpression)));
-            return successMessage.isDisplayed();
-
-        } catch (NoSuchElementException e) {
-            System.out.println("One or more error messages were not found: " + e.getMessage());
-            return false;
-        } catch (TimeoutException e) {
-            System.out.println("Timed out waiting for error messages to appear: " + e.getMessage());
-            return false;
-        } catch (Exception e) {
-            System.out.println("An unexpected error occurred: " + e.getMessage());
-            return false;
-        }
     }
 
     //TC03

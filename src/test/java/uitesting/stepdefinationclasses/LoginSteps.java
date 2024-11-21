@@ -1,12 +1,16 @@
 package uitesting.stepdefinationclasses;
-
 import basetest.BrowserFactoryDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
+
+import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,6 +46,9 @@ public class LoginSteps {
 
     @Then("I should see the {string}")
     public void iShouldSeeThe(String expectedErrorMessage) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Increased to 20 seconds
+        wait.until(ExpectedConditions.visibilityOf(loginPage.getErrorMessageElement()));
+
         String actualErrorMessage = loginPage.errorMessage();
         assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -59,6 +66,8 @@ public class LoginSteps {
 
     @Then("^I should get \"([^\"]*)\"$")
     public void iShouldGet(String expectedMessage) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Increased to 20 seconds
+        wait.until(ExpectedConditions.visibilityOf(loginPage.getSuccessMessageElement()));
         String actualMessage = loginPage.successMessage();
         assertEquals(expectedMessage, actualMessage);
     }
@@ -92,8 +101,11 @@ public class LoginSteps {
     public void iClickLogoutButton() {
         loginPage.clickLogoutButton();
     }
+
     @Then("I should receive {string}")
     public void iShouldReceive(String logoutMessage) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Increased to 20 seconds
+        wait.until(ExpectedConditions.visibilityOf(loginPage.getLogoutMessageElement()));
         String actualLogoutMessage = loginPage.logoutMessage();
         assertEquals(logoutMessage,actualLogoutMessage);
 
@@ -107,5 +119,4 @@ public class LoginSteps {
         this.loginPage=new LoginPage(driver);
 
     }
-
 }

@@ -126,10 +126,5 @@ public class ProfilePageStepDefs {
         assertEquals(logoutMessage,actualLogoutMessage);
 
     }
-    /*@Then("close the tab")
-    public void closeTheBrowser() {
-        BrowserFactoryDriver.cleanUp();
-        this.driver=BrowserFactoryDriver.getDriver();
-        this.profilePage=new ProfilePage(driver);
-    }*/
+
 }

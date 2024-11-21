@@ -56,8 +56,8 @@ Feature: Login to EnergyXGain
     Then close the tab
 
     Examples:
-      | Email                     | password   |
-      | sachintendulkar@gmail.com | Sachin@123 |
+      | Email                | password  |
+      | Testing8@example.com | Test@1234 |
 
 
   @valid
@@ -65,9 +65,9 @@ Feature: Login to EnergyXGain
     When I enter email "<Email>"
     Then I enter password "<password>"
     And I click Login button
-    Then I should get "Successfully Logged In"
+    Then I should get "Successfully Logged in"
 
     Examples:
-      | Email                  | password    |
-      | uitesting123@gmail.com | Testing@123 |
+      | Email                | password  |
+      | Testing8@example.com | Test@1234 |
 

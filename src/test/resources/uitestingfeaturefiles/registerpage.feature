@@ -17,8 +17,8 @@ Feature: User Registration Form Validation
   #TC02 - Validate successful registration with correct data
   Scenario: Validate successful registration with correct data
     Given I navigate to the registration page
-    When I enter "John Doe" in the Name field
-    And I enter "johdojkenjkf@example.com" in the Email field
+    When I enter "John jdDoej" in the Name field
+    And I enter "johnj@example.com" in the Email field
     And I enter "Test@1234" in the Password field
     And I select "Lose weight" from the Target dropdown
     And I select "climbing" from the Preferable Activity dropdown
@@ -28,7 +28,7 @@ Feature: User Registration Form Validation
   Scenario: Validate with already registration with correct data
     Given I navigate to the registration page
     When I enter "John Doe" in the Name field
-    And I enter "johdomebhbjk32r2nmhhh@example.com" in the Email field
+    And I enter "johdj@example.com" in the Email field
     And I enter "Test@1234" in the Password field
     And I select "Lose weight" from the Target dropdown
     And I select "climbing" from the Preferable Activity dropdown
@@ -81,7 +81,7 @@ Feature: User Registration Form Validation
   Scenario: Validate name format first character caps
     Given I navigate to the registration page
     When I enter "john" in the Name field
-    And I enter "johdomebemnnm@example.com" in the Email field
+    And I enter "johdomebehmnnm@example.com" in the Email field
     And I enter "Test@1234" in the Password field
     And I select "Lose weight" from the Target dropdown
     And I select "climbing" from the Preferable Activity dropdown

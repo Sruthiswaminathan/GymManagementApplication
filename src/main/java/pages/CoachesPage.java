@@ -20,6 +20,10 @@ public class CoachesPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(40));
     }
 
+    public static WebElement getSuccessMessageElement() {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//div[contains(text(),'Workout Created Successfully')])[1]")));
+    }
+
     public boolean isDashboardPageDisplayed() {
         WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(), 'EnergyX')]")));
         return header.isDisplayed();
@@ -32,8 +36,9 @@ public class CoachesPage {
 
     public synchronized void availableCoachesList() {
 
-        WebElement list = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//img[@src='/assets/Avatar4-BB-9-qZ5.png']")));
+        WebElement list = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//img[@class='MuiCardMedia-root MuiCardMedia-media MuiCardMedia-img css-146e5oc' and @src='/assets/Avatar-o6SOcAyW.png']")));
         list.isDisplayed();
+        //img[@src='/assets/Avatar4-BB-9-qZ5.png']
     }
     public void nameOfCoaches() {
         WebElement name = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".MuiTypography-root.MuiTypography-h6.css-41ysla")));
@@ -82,7 +87,7 @@ public class CoachesPage {
 
     public void scrollDown() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,350)");
+        js.executeScript("window.scrollBy(0,800)");
     }
 
     public void scrollUp() {

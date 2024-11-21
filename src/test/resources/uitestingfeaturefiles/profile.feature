@@ -9,17 +9,18 @@ Feature: Profile Page
   Scenario: Update personal information on the Profile Page
     Given I click on the profile icon
     And I click on My Accounts
-    When I update the name with "Johngh Doenk"
-    And I update the target with "Gain weight"
+    When I update the name with "John Doenkm"
+    And I update the target with "Lose weight"
     And I update the preferred activity to "yoga"
     And click on save changes
     Then I should get message as "Profile Updated Sucessfully"
 
+
   Scenario: Update personal information on the Profile Page
     Given I click on the profile icon
     And I click on My Accounts
-    When I update the name with "Johngh Doenk"
-    And I update the target with "Gain weight"
+    When I update the name with "John Doenkm"
+    And I update the target with "Lose weight"
     And I update the preferred activity to "yoga"
     And click on save changes
     And I should get error message as "Same Data"

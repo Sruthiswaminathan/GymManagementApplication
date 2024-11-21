@@ -19,15 +19,9 @@ public class RegisterPageStepsDef {
     public void setUp() {
         driver = BrowserFactoryDriver.getDriver();
         registerPage = new RegisterPage(driver);
-        driver.get("http://52.221.11.140/login");
+        driver.get("https://gym-frontend-team6-gym-frontend-dev.shared.edp-dev.cloudmentor.academy");
     }
 
-    /*  @After
-      public void tearDown() {
-          if (driver != null) {
-              driver.quit();
-          }
-      }*/
     @Given("I navigate to the registration page")
     public void iNavigateToTheRegistrationPage() {
         registerPage.clickCreateNewAccount();
@@ -168,11 +162,10 @@ public class RegisterPageStepsDef {
         registerPage.verifyTabOrder();
 
     }
-
-
     //TC11
     @And("I toggle the password visibility")
     public void iToggleThePasswordVisibility() {
         registerPage.togglePasswordVisibility();
+        BrowserFactoryDriver.cleanUp();
     }
 }

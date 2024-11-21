@@ -1,6 +1,5 @@
 package apitesting.stepdefinitions;
-
-import apitesting.stepdefinitions.Config;
+import apitesting.apiurl.Config;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

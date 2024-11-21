@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AlitaSettings">
+    <option name="integrationName" value="ai_dial" />
+    <option name="integrationUid" value="8a5c3de3-7b51-459f-bf56-f2ac8f0882a6" />
+    <option name="llmModelName" value="gpt-4" />
+    <option name="llmModelNames">
+      <set>
+        <option value="CodeLlama-34b-Instruct-hf" />
+        <option value="GPT_3_5_TURBO" />
+        <option value="Llama-3-8B-Instruct" />
+        <option value="Mistral-7B-Instruct" />
+        <option value="Mixtral-8x7B-Instruct-v0.1" />
+        <option value="ai21.j2-grande-instruct" />
+        <option value="ai21.j2-jumbo-instruct" />
+        <option value="amazon.titan-tg1-large" />
+        <option value="anthropic.claude" />
+        <option value="anthropic.claude-instant-v1" />
+        <option value="anthropic.claude-v2" />
+        <option value="anthropic.claude-v2-1" />
+        <option value="anthropic.claude-v3-5-sonnet" />
+        <option value="anthropic.claude-v3-haiku" />
+        <option value="anthropic.claude-v3-opus" />
+        <option value="anthropic.claude-v3-sonnet" />
+        <option value="chat-bison-32k@002" />
+        <option value="chat-bison@001" />
+        <option value="codechat-bison-32k@002" />
+        <option value="codechat-bison@001" />
+        <option value="cohere.command-text-v14" />
+        <option value="gemini-1.5-flash-001" />
+        <option value="gemini-1.5-pro-preview-0409" />
+        <option value="gemini-pro" />
+        <option value="gemini-pro-vision" />
+        <option value="gpt-35-turbo" />
+        <option value="gpt-35-turbo-0125" />
+        <option value="gpt-35-turbo-0301" />
+        <option value="gpt-35-turbo-0613" />
+        <option value="gpt-35-turbo-1106" />
+        <option value="gpt-35-turbo-16k" />
+        <option value="gpt-4" />
+        <option value="gpt-4-0125-preview" />
+        <option value="gpt-4-0613" />
+        <option value="gpt-4-1106-preview" />
+        <option value="gpt-4-32k" />
+        <option value="gpt-4-32k-0314" />
+        <option value="gpt-4-32k-0613" />
+        <option value="gpt-4-turbo" />
+        <option value="gpt-4-turbo-2024-04-09" />
+        <option value="gpt-4o-2024-05-13" />
+        <option value="gpt-4o-2024-08-06" />
+        <option value="gpt-4o-mini-2024-07-18" />
+        <option value="llama-3-70b-instruct-awq" />
+        <option value="meta.llama2" />
+        <option value="meta.llama2-13b-chat-v1" />
+        <option value="meta.llama2-70b-chat-v1" />
+        <option value="text-embedding-3-large-1" />
+        <option value="text-embedding-3-small-1" />
+        <option value="text-embedding-ada-002" />
+        <option value="textembedding-gecko@001" />
+      </set>
+    </option>
+    <option name="llmServerUrl" value="https://alita.lab.epam.com" />
+    <option name="projectId" value="2770" />
+  </component>
+</project>

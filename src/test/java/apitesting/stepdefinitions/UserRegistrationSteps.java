@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 public class UserRegistrationSteps {
+
     private Response response;
     @Given("I am a user")
     public void iAmAUser() {

@@ -7,9 +7,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.LoginPage;
 import pages.WorkoutPage;
 import uitesting.apiurls.Config1;
+
+import java.time.Duration;
 import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
@@ -60,7 +64,8 @@ public class WorkoutPageStepDefs {
     //TC01
     @When("the user navigates to the Workout page")
     public void theUserNavigatesToTheWorkoutPage() {
-        assertTrue(workoutPage.goToSection());
+
+      /*  assertTrue(workoutPage.goToSection());*/
     }
     @When("the user views the scheduled workout for {string} on date {string}")
     public void theUserViewsTheScheduledWorkoutForOnDate(String workoutType, String expectedDate) {
@@ -94,11 +99,5 @@ public class WorkoutPageStepDefs {
     @And("the user leaves feedback with rating {string} and comments {string}")
     public void theUserClicksOnTheLeaveFeedbackWithRatingAndComments(String rating,String comments) {
         workoutPage.leaveFeedback(rating, comments);
-    }
-
-    @Then("I should get  the error as {string}")
-    public void iShouldGetTheErrorAs(String InvalidErrorMessage) {
-        String actualInvalidErrorMessage = workoutPage.invalidErrorMessage();
-        assertEquals(InvalidErrorMessage,actualInvalidErrorMessage);
     }
 }

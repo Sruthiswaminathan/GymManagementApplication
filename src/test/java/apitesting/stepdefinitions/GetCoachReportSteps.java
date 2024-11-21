@@ -1,6 +1,5 @@
 package apitesting.stepdefinitions;
-
-import apitesting.stepdefinitions.Config;
+import apitesting.apiurl.Config;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 
@@ -10,13 +9,13 @@ import static io.restassured.RestAssured.*;
 import static org.junit.Assert.assertEquals;
 
 public class GetCoachReportSteps {
+    private Properties config;
     private Response getCoachReportResponse;
     private String coachReportEndpoint;
     private String coachId;
     String token;
     private String loginEndpoint;
     private Response loginResponse;
-    private Properties config;
 
     public GetCoachReportSteps() {
         try {

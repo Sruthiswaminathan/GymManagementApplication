@@ -1,6 +1,6 @@
 package apitesting.stepdefinitions;
 
-import apitesting.stepdefinitions.Config;
+import apitesting.apiurl.Config;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,10 +19,10 @@ public class PostClientFeedbackSteps {
     private Response postFeedbackResponse;
     private String clientFeedbackEndpoint;
     private String token;
+    private Properties config;
     private String feedbackBody;
     private String loginEndpoint;
     private Response loginResponse;
-    private Properties config;
 
     public PostClientFeedbackSteps() {
         try {
