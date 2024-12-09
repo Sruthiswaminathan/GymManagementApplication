@@ -82,7 +82,7 @@ public class LoginPage {
 
     public void clickOnProfileButton() {
         WebElement profileButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@type='button' and contains(@class, 'MuiButtonBase-root') and contains(@class, 'MuiIconButton-root')])[2]")));
-        ////button[@type='button'][2]
+        ////button[@type='button' and contains(@class, 'MuiButtonBase-root') and contains(@class, 'MuiIconButton-root')][2]
         profileButton.click();
     }
 
